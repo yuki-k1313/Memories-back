@@ -1,5 +1,4 @@
 package com.jmg.memories_back.Service.Implement;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,7 +8,6 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jmg.memories_back.common.entity.CustomOAuth2User;
 import com.jmg.memories_back.common.entity.UserEntity;
 import com.jmg.memories_back.provider.JwtProvider;
