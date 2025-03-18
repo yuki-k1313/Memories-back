@@ -9,5 +9,8 @@ public interface ResponseCode {
 
     String SIGN_IN_FAIL = "SF";
     
+    String NO_PERMISSION = "NP";
+
     String DATABASE_ERROR = "DBE";
+    
 }

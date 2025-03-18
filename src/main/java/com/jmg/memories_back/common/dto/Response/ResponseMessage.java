@@ -7,7 +7,9 @@ public interface ResponseMessage {
     String EXIST_USER = "Exist User.";
     String NO_EXIST_DIARY = "No Exist Diary.";
 
-    String SIGN_IN_FAIL = "Success Fail";
+    String SIGN_IN_FAIL = "Sign In Fail.";
+
+    String NO_PERMISSION = "No Permission.";
     
     String DATABASE_ERROR = "Database Error.";
 }

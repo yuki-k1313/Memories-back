@@ -3,6 +3,7 @@ package com.jmg.memories_back.common.entity;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import com.jmg.memories_back.common.dto.request.diary.PatchDiaryRequestDto;
 import com.jmg.memories_back.common.dto.request.diary.PostDiaryRequestDto;
 
 import jakarta.persistence.Entity;
@@ -43,6 +44,15 @@ public class DiaryEntity {
         this.feeling = dto.getFeeling();
         this.title = dto.getTitle();
         this.content = dto.getContent();
+    }
+
+    public void patch(PatchDiaryRequestDto dto) {
+        
+        this.weather = dto.getWeather();
+        this.feeling = dto.getFeeling();
+        this.title = dto.getTitle();
+        this.content = dto.getContent();
+
     }
 
 }
