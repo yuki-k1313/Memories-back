@@ -6,7 +6,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import com.jmg.memories_back.common.dto.Response.ResponseDto;
+import com.jmg.memories_back.common.dto.response.ResponseDto;
 
 @RestControllerAdvice
 public class CustomExceptionHandler {

@@ -1,9 +1,9 @@
-package com.jmg.memories_back.common.dto.Response.auth;
+package com.jmg.memories_back.common.dto.response.auth;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.jmg.memories_back.common.dto.Response.ResponseDto;
+import com.jmg.memories_back.common.dto.response.ResponseDto;
 
 import lombok.Getter;
 

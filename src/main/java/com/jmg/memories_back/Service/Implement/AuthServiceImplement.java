@@ -7,11 +7,11 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.jmg.memories_back.Service.AuthService;
-import com.jmg.memories_back.common.dto.Response.ResponseDto;
-import com.jmg.memories_back.common.dto.Response.auth.SignInResponseDto;
 import com.jmg.memories_back.common.dto.request.auth.SignInRequestDto;
 import com.jmg.memories_back.common.dto.request.auth.SignUpRequestDto;
 import com.jmg.memories_back.common.dto.request.auth.idCheckRequestDto;
+import com.jmg.memories_back.common.dto.response.ResponseDto;
+import com.jmg.memories_back.common.dto.response.auth.SignInResponseDto;
 import com.jmg.memories_back.common.entity.UserEntity;
 import com.jmg.memories_back.provider.JwtProvider;
 import com.jmg.memories_back.repository.UserRepository;
