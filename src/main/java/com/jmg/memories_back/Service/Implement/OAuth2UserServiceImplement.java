@@ -3,15 +3,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
-import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.OAuth2AuthenticationException;
+import org.springframework.security.oauth2.client.userinfo.OAuth2UserRequest;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Service;
 
 import com.jmg.memories_back.common.entity.CustomOAuth2User;
+import com.jmg.memories_back.repository.UserRepository;
 import com.jmg.memories_back.common.entity.UserEntity;
 import com.jmg.memories_back.provider.JwtProvider;
-import com.jmg.memories_back.repository.UserRepository;
 
 import lombok.RequiredArgsConstructor;
 
