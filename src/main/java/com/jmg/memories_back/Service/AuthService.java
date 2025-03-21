@@ -1,4 +1,4 @@
-package com.jmg.memories_back.Service;
+package com.jmg.memories_back.service;
 
 import org.springframework.http.ResponseEntity;
 

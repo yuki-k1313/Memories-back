@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jmg.memories_back.Service.AuthService;
 import com.jmg.memories_back.common.dto.request.auth.SignInRequestDto;
 import com.jmg.memories_back.common.dto.request.auth.SignUpRequestDto;
 import com.jmg.memories_back.common.dto.request.auth.idCheckRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.dto.response.auth.SignInResponseDto;
+import com.jmg.memories_back.service.AuthService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

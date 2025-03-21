@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jmg.memories_back.Service.DiaryService;
 import com.jmg.memories_back.common.dto.request.diary.PatchDiaryRequestDto;
 import com.jmg.memories_back.common.dto.request.diary.PostDiaryRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetDiaryResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetMyDiaryResponseDto;
+import com.jmg.memories_back.service.DiaryService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.jmg.memories_back.Service.Implement;
+package com.jmg.memories_back.service.Implement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.jmg.memories_back.Service.DiaryService;
 import com.jmg.memories_back.common.dto.request.diary.PatchDiaryRequestDto;
 import com.jmg.memories_back.common.dto.request.diary.PostDiaryRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
@@ -15,6 +14,7 @@ import com.jmg.memories_back.common.dto.response.diary.GetDiaryResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetMyDiaryResponseDto;
 import com.jmg.memories_back.common.entity.DiaryEntity;
 import com.jmg.memories_back.repository.DiaryRepository;
+import com.jmg.memories_back.service.DiaryService;
 
 import lombok.RequiredArgsConstructor;
 
