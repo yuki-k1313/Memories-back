@@ -13,12 +13,10 @@ public class TestServuceImplement implements TestService {
 
 	@Override
 	public ResponseEntity<ResponseDto> postMemory(PostMemoryRequestDto dto, String userId) {
-		
-
 
 		try {
 			
-
+			Integer testCount;
 
 		} catch (Exception exception) {
 			exception.printStackTrace();
