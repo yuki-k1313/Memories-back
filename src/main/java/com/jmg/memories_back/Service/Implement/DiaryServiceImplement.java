@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.jmg.memories_back.common.dto.request.diary.PatchDiaryRequestDto;
 import com.jmg.memories_back.common.dto.request.diary.PostDiaryRequestDto;
-import com.jmg.memories_back.common.dto.response.ResponseDto;
-import com.jmg.memories_back.common.dto.response.diary.GetDiaryResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetMyDiaryResponseDto;
+import com.jmg.memories_back.common.dto.response.diary.GetDiaryResponseDto;
+import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.entity.DiaryEntity;
 import com.jmg.memories_back.repository.DiaryRepository;
 import com.jmg.memories_back.service.DiaryService;

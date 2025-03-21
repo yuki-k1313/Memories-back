@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.jmg.memories_back.common.dto.request.user.PatchUserRequestDto;
-import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.dto.response.user.GetSignInUserResponseDto;
+import com.jmg.memories_back.common.dto.response.ResponseDto;
+import com.jmg.memories_back.common.dto.request.user.PatchUserRequestDto;
 import com.jmg.memories_back.common.entity.UserEntity;
 import com.jmg.memories_back.repository.UserRepository;
 import com.jmg.memories_back.service.UserService;
