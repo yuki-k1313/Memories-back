@@ -5,6 +5,8 @@ import com.jmg.memories_back.common.dto.request.test.PostMemoryRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.dto.response.test.GetConcentrationResponseDto;
 import com.jmg.memories_back.common.dto.response.test.GetMemoryResponseDto;
+import com.jmg.memories_back.common.dto.response.test.GetRecentlyConcentrationResponseDto;
+import com.jmg.memories_back.common.dto.response.test.GetRecentlyMemoryResponseDto;
 import com.jmg.memories_back.common.entity.ConcentrationTestEntity;
 import com.jmg.memories_back.common.entity.MemoryTestEntity;
 import com.jmg.memories_back.repository.ConcentrationTestRepository;
@@ -99,6 +101,7 @@ public class TestServuceImplement implements TestService {
 	public ResponseEntity<? super GetConcentrationResponseDto> getConcentration(String userId) {
 		
 		List<ConcentrationTestEntity> concentrationTestEntities = new ArrayList<>();
+
 		try {
 			
 			concentrationTestEntities = concentrationTestRepository.findByUserIdOrderBySequenceDesc(userId);
@@ -109,6 +112,42 @@ public class TestServuceImplement implements TestService {
 		}
 
 		return GetConcentrationResponseDto.success(concentrationTestEntities);
+
+	}
+
+	@Override
+	public ResponseEntity<? super GetRecentlyMemoryResponseDto> getRecentlyMemory(String userId) {
+		
+		List<MemoryTestEntity> memoryTestEntities = new ArrayList<>();
+
+		try {
+			
+			memoryTestEntities = memoryTestRepository.findTop10ByUserIdOrderBySequenceDesc(userId);
+
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			return ResponseDto.databaseError();
+		}
+
+		return GetRecentlyMemoryResponseDto.success(memoryTestEntities);
+
+	}
+
+	@Override
+	public ResponseEntity<? super GetRecentlyConcentrationResponseDto> getRecentlyConcentration(String userId) {
+		
+		List<ConcentrationTestEntity> concentrationTestEntities = new ArrayList<>();
+
+		try {
+			
+			concentrationTestEntities = concentrationTestRepository.findTop10ByUserIdOrderBySequenceDesc(userId);
+
+		} catch (Exception exception) {
+			exception.printStackTrace();
+			return ResponseDto.databaseError();
+		}
+
+		return GetRecentlyConcentrationResponseDto.success(concentrationTestEntities);
 
 	}
 	
