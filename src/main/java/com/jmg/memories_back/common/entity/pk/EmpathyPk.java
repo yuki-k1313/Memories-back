@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmpathyPk implements Serializable { 
+public class EmpathyPk implements Serializable {
   @Column(name="user_id")
   private String userId;
   @Column(name="diary_number")
