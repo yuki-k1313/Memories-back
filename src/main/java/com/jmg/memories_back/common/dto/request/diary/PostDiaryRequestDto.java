@@ -12,14 +12,14 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostDiaryRequestDto {
-    @NotBlank
-    @Pattern(regexp="^맑음|흐림|비|눈|안개$")
-    private String weather;
-    @NotBlank
-    @Pattern(regexp="^행복|즐거움|보통|슬픔|분노$")
-    private String feeling;
-    @NotBlank
-    private String title;
-    @NotBlank
-    private String content;
+  @NotBlank
+  @Pattern(regexp="^맑음|흐림|비|눈|안개$")
+  private String weather;
+  @NotBlank
+  @Pattern(regexp="^행복|즐거움|보통|슬픔|분노$")
+  private String feeling;
+  @NotBlank
+  private String title;
+  @NotBlank
+  private String content;
 }
