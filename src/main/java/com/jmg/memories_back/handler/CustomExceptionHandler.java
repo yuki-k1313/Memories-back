@@ -10,16 +10,16 @@ import com.jmg.memories_back.common.dto.response.ResponseDto;
 
 @RestControllerAdvice
 public class CustomExceptionHandler {
-
-    // description: MethodArgumentNotValidException - 유효성 검사 실패 //
-    // description: HttpMessageNotReadableException - RequestBody가 필요한데 존재하지 않을 때 //
-    @ExceptionHandler({
-        MethodArgumentNotValidException.class,
-        HttpMessageNotReadableException.class
-    })
-    public ResponseEntity<ResponseDto> validExceptionHandler(Exception exception) {
-        exception.printStackTrace();
-        return ResponseDto.validationFail();
-    }
+  
+  // description: MethodArgumentNotValidException - 유효성 검사 실패
+  // description: HttpMessageNotReadableException - RequestBody가 필요한데 존재하지 않을때
+  @ExceptionHandler({
+    MethodArgumentNotValidException.class,
+    HttpMessageNotReadableException.class
+  })
+  public ResponseEntity<ResponseDto> validExceptionHandler(Exception exception) {
+    exception.printStackTrace();
+    return ResponseDto.validationFail();
+  }
 
 }
