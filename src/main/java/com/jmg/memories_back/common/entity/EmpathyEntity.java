@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmpathyEntity { 
+public class EmpathyEntity {
   @Id
   private String userId;
   @Id
