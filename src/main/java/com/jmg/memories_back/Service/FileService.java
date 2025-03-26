@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public interface FileService {
 
-	String uplode(MultipartFile file);
+	String upload(MultipartFile file);
 	Resource getImageFile(String fileName);
 
 }

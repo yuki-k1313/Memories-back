@@ -21,11 +21,11 @@ public class FileController {
 
 	private final FileService fileService;
 	
-	@PostMapping("/uplode")
+	@PostMapping("/upload")
 	public String upload(
 		@RequestParam("file") MultipartFile file
 	) {
-		String url = fileService.uplode(file);
+		String url = fileService.upload(file);
 		return url;
 	}
 
