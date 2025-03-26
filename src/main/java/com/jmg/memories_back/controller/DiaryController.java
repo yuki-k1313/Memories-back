@@ -16,7 +16,7 @@ import com.jmg.memories_back.common.dto.request.diary.PostDiaryRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetDiaryResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetMyDiaryResponseDto;
-import com.jmg.memories_back.service.DiaryService;
+import com.jmg.memories_back.service.DiarySerivce;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,51 +25,51 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/diary")
 @RequiredArgsConstructor
 public class DiaryController {
-    
-    private final DiaryService diarySerivce;
+  
+  private final DiarySerivce diarySerivce;
 
-    @PostMapping({"", "/"})
-    public ResponseEntity<ResponseDto> postDiary(
-        @RequestBody @Valid PostDiaryRequestDto requestBody,
-        @AuthenticationPrincipal String userId
-    ) {
-        ResponseEntity<ResponseDto> response = diarySerivce.postDiary(requestBody, userId);
-        return response;
-    }
+  @PostMapping({"", "/"})
+  public ResponseEntity<ResponseDto> postDiary(
+    @RequestBody @Valid PostDiaryRequestDto requestBody,
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<ResponseDto> response = diarySerivce.postDiary(requestBody, userId);
+    return response;
+  }
 
-    @GetMapping("/my")
-    public ResponseEntity<? super GetMyDiaryResponseDto> getMyDiary(
-        @AuthenticationPrincipal String userId
-    ) {
-        ResponseEntity<? super GetMyDiaryResponseDto> response = diarySerivce.getMyDiary(userId);
-        return response;
-    }
+  @GetMapping("/my")
+  public ResponseEntity<? super GetMyDiaryResponseDto> getMyDiary(
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<? super GetMyDiaryResponseDto> response = diarySerivce.getMyDiary(userId);
+    return response;
+  }
 
-    @GetMapping("/{diaryNumber}")
-    public ResponseEntity<? super GetDiaryResponseDto> getDiary(
-        @PathVariable("diaryNumber") Integer diaryNumber
-    ) {
-        ResponseEntity<? super GetDiaryResponseDto> response = diarySerivce.getDiary(diaryNumber);
-        return response;
-    }
+  @GetMapping("/{diaryNumber}")
+  public ResponseEntity<? super GetDiaryResponseDto> getDiary(
+    @PathVariable("diaryNumber") Integer diaryNumber
+  ) {
+    ResponseEntity<? super GetDiaryResponseDto> response = diarySerivce.getDiary(diaryNumber);
+    return response;
+  }
 
-    @PatchMapping("/{diaryNumber}")
-    public ResponseEntity<ResponseDto> patchDiary(
-        @RequestBody @Valid PatchDiaryRequestDto requestBody,
-        @PathVariable("diaryNumber") Integer diaryNumber,
-        @AuthenticationPrincipal String userId
-    ) {
-        ResponseEntity<ResponseDto> response = diarySerivce.patchDiary(requestBody, diaryNumber, userId);
-        return response;
-    }
+  @PatchMapping("/{diaryNumber}")
+  public ResponseEntity<ResponseDto> patchDiary(
+    @RequestBody @Valid PatchDiaryRequestDto requestBody,
+    @PathVariable("diaryNumber") Integer diaryNumber,
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<ResponseDto> response = diarySerivce.patchDiary(requestBody, diaryNumber, userId);
+    return response;
+  }
 
-    @DeleteMapping("/{diaryNumber}")
-    public ResponseEntity<ResponseDto> deleteDiary (
-        @PathVariable("diaryNumber") Integer diaryNumber,
-        @AuthenticationPrincipal String userId
-    ) {
-        ResponseEntity<ResponseDto> response = diarySerivce.deleteDiary(diaryNumber, userId);
-        return response;
-    }
+  @DeleteMapping("/{diaryNumber}")
+  public ResponseEntity<ResponseDto> deleteDiary(
+    @PathVariable("diaryNumber") Integer diaryNumber,
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<ResponseDto> response = diarySerivce.deleteDiary(diaryNumber, userId);
+    return response;
+  }
 
 }
