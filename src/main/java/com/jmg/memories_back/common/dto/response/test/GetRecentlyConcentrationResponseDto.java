@@ -7,22 +7,25 @@ import org.springframework.http.ResponseEntity;
 
 import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.entity.ConcentrationTestEntity;
-import com.jmg.memories_back.common.vo.ConcentrationTestVo;
+import com.jmg.memories_back.common.vo.ConcentrationTestVO;
 
 import lombok.Getter;
 
 @Getter
 public class GetRecentlyConcentrationResponseDto extends ResponseDto {
 
-	private List<ConcentrationTestVo> concentrationTests;
+  private List<ConcentrationTestVO> concentrationTests;
 
-	private GetRecentlyConcentrationResponseDto(List<ConcentrationTestEntity> concentrationTestEntities) {
-		this.concentrationTests = ConcentrationTestVo.getList(concentrationTestEntities);
-	}
+  private GetRecentlyConcentrationResponseDto(
+    List<ConcentrationTestEntity> concentrationTestEntities
+  ) {
+    this.concentrationTests = ConcentrationTestVO.getList(concentrationTestEntities);
+  }
 
-	public static ResponseEntity<GetRecentlyConcentrationResponseDto> success(List<ConcentrationTestEntity> concentrationTestEntities) {
-		GetRecentlyConcentrationResponseDto body = new GetRecentlyConcentrationResponseDto(concentrationTestEntities);
-		return ResponseEntity.status(HttpStatus.OK).body(body);
-	}
-
+  public static ResponseEntity<GetRecentlyConcentrationResponseDto> success(
+    List<ConcentrationTestEntity> concentrationTestEntities
+  ) {
+    GetRecentlyConcentrationResponseDto body = new GetRecentlyConcentrationResponseDto(concentrationTestEntities);
+    return ResponseEntity.status(HttpStatus.OK).body(body);
+  }
 }
