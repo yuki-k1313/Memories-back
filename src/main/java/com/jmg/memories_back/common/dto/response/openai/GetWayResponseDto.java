@@ -15,7 +15,7 @@ public class GetWayResponseDto extends ResponseDto {
     this.result = result;
   }
 
-  public static ResponseEntity<GetWayResponseDto> success(String result) {
+  public static ResponseEntity<GetWayResponseDto> success(String result) { 
     GetWayResponseDto body = new GetWayResponseDto(result);
     return ResponseEntity.status(HttpStatus.OK).body(body);
   }

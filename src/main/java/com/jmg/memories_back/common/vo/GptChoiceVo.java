@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GptChoiceVo {
+public class GptChoiceVo { 
 	private int index;
 	private GptMessageVo message;
 	private String finish_reason;

@@ -11,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetWayRequestDto {
+public class GetWayRequestDto { 
 	@NotBlank
 	@Pattern(regexp="^(기억력|집중력)$")
 	private String type;

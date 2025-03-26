@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ChatRequestDto {
+public class ChatRequestDto { 
 	private String model;
 	private List<GptMessageVo> messages;
 }

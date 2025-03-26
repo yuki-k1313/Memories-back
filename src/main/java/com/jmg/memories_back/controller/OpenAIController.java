@@ -23,7 +23,7 @@ public class OpenAIController {
 	private final OpenAIService openAIService;
 
 	@PostMapping("/way")
-	public ResponseEntity<? super GetWayResponseDto> getWay(
+	public ResponseEntity<? super GetWayResponseDto> getWay( 
 		@RequestBody @Valid GetWayRequestDto requestBody,
 		@AuthenticationPrincipal String userId
 	) {
