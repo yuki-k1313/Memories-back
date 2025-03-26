@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.jmg.memories_back.common.dto.request.auth.IdCheckRequestDto;
 import com.jmg.memories_back.common.dto.request.auth.SignInRequestDto;
 import com.jmg.memories_back.common.dto.request.auth.SignUpRequestDto;
-import com.jmg.memories_back.common.dto.request.auth.IdCheckRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.dto.response.auth.SignInResponseDto;
 import com.jmg.memories_back.service.AuthService;
@@ -21,30 +21,30 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthController {
 
-    private final AuthService authService;
+  private final AuthService authService;
 
-    @PostMapping("/id-check")
-    public ResponseEntity<ResponseDto> idCheck(
-        @RequestBody @Valid IdCheckRequestDto requestBody
-    ) {
-        ResponseEntity<ResponseDto> response = authService.idCheck(requestBody);
-        return response;
-    }
+  @PostMapping("/id-check")
+  public ResponseEntity<ResponseDto> idCheck(
+    @RequestBody @Valid IdCheckRequestDto requestBody
+  ) {
+    ResponseEntity<ResponseDto> response = authService.idCheck(requestBody);
+    return response;
+  }
 
-    @PostMapping("/sign-up")
-    ResponseEntity<ResponseDto> signUp(
-        @RequestBody @Valid SignUpRequestDto requestBody
-    ) {
-        ResponseEntity<ResponseDto> response = authService.signUp(requestBody);
-        return response;
-    }
+  @PostMapping("/sign-up")
+  ResponseEntity<ResponseDto> signUp(
+    @RequestBody @Valid SignUpRequestDto requestBody
+  ) {
+    ResponseEntity<ResponseDto> response = authService.signUp(requestBody);
+    return response;
+  }
 
-    @PostMapping("/sign-in")
-    public ResponseEntity<? super SignInResponseDto> signIn(
-        @RequestBody @Valid SignInRequestDto requestBody
-    ) {
-        ResponseEntity<? super SignInResponseDto> response = authService.signIn(requestBody);
-        return response;
-    }
-    
+  @PostMapping("/sign-in")
+  public ResponseEntity<? super SignInResponseDto> signIn(
+    @RequestBody @Valid SignInRequestDto requestBody
+  ) {
+    ResponseEntity<? super SignInResponseDto> response = authService.signIn(requestBody);
+    return response;
+  }
+  
 }
