@@ -12,10 +12,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostConcentrationRequestDto {
-	@NotNull
-	@Min(0)
-	private Integer measurementScore;
-	@NotNull
-	@Min(0)
-	private Integer errorCount;
+  @NotNull
+  @Min(0)
+  private Integer measurementScore;
+  @NotNull
+  @Min(0)
+  private Integer errorCount;
 }
