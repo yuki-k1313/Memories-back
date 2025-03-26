@@ -1,4 +1,3 @@
-
 package com.jmg.memories_back.config;
 
 import java.io.IOException;
@@ -44,7 +43,7 @@ public class WebSecurityConfig {
 
   // function: Web Security 설정 메서드 //
   @Bean
-  protected SecurityFilterChain configure(HttpSecurity security) throws Exception { 
+  protected SecurityFilterChain configure(HttpSecurity security) throws Exception {
 
     security
       // description: Basic 인증 미사용 지정 //

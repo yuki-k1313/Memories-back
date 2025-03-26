@@ -6,19 +6,20 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
-public class WebClientConfig { 
-	
-	@Value("${openai.api.key}")
-	private String openAIkey;
+public class WebClientConfig {
+  
+  @Value("${openai.api.key}")
+  private String openAIKey;
 
-	@Bean
-	public WebClient openAiWebClient() {
+  @Bean
+  public WebClient openAiWebClient() {
+    
+    return WebClient.builder()
+      .baseUrl("https://api.openai.com/v1")
+      .defaultHeader("Content-Type", "application/json")
+      .defaultHeader("Authorization", "Bearer " + openAIKey)
+      .build();
 
-		return WebClient.builder()
-			.baseUrl("https://api.openai.com/v1")
-			.defaultHeader("Content-Type", "application/json")
-			.defaultHeader("Authorization", "Bearer " + openAIkey)
-			.build();
-	}
+  }
 
 }
