@@ -2,7 +2,7 @@ package com.jmg.memories_back.common.dto.response.openai;
 
 import java.util.List;
 
-import com.jmg.memories_back.common.vo.GptChoiceVo;
+import com.jmg.memories_back.common.vo.GptChoiceVO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,5 +14,5 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ChatResponseDto { 
-  private List<GptChoiceVo> choices;
+  private List<GptChoiceVO> choices;
 }
