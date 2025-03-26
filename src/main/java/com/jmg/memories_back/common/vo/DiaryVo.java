@@ -8,31 +8,29 @@ import com.jmg.memories_back.common.entity.DiaryEntity;
 import lombok.Getter;
 
 @Getter
-public class DiaryVo {
-    private Integer diaryNumber;
-    private String writeDate;
-    private String title;
-    private String weather;
-    private String feeling;
+public class DiaryVO {
+  private Integer diaryNumber;
+  private String writeDate;
+  private String title;
+  private String weather;
+  private String feeling;
 
-    private DiaryVo(DiaryEntity diaryEntity) {
-        this.diaryNumber = diaryEntity.getDiaryNumber();
-        this.writeDate = diaryEntity.getWriteDate();
-        this.title = diaryEntity.getTitle();
-        this.weather = diaryEntity.getWeather();
-        this.feeling = diaryEntity.getFeeling();
+  private DiaryVO(DiaryEntity diaryEntity) {
+    this.diaryNumber = diaryEntity.getDiaryNumber();
+    this.writeDate = diaryEntity.getWriteDate();
+    this.title = diaryEntity.getTitle();
+    this.weather = diaryEntity.getWeather();
+    this.feeling = diaryEntity.getFeeling();
+  }
+
+  public static List<DiaryVO> getList(List<DiaryEntity> diaryEntities) {
+    List<DiaryVO> list = new ArrayList<>();
+
+    for (DiaryEntity diaryEntity: diaryEntities) {
+      DiaryVO vo = new DiaryVO(diaryEntity);
+      list.add(vo);
     }
 
-    public static List<DiaryVo> getList(List<DiaryEntity> diaryEntities) {
-
-        List<DiaryVo> list = new ArrayList<>();
-        for(DiaryEntity diaryEntity: diaryEntities) {
-            DiaryVo vo = new DiaryVo(diaryEntity);
-            list.add(vo);
-        }
-
-        return list;
-
-    }
-
+    return list;
+  }
 }
