@@ -18,61 +18,61 @@ import io.jsonwebtoken.security.Keys;
 // description: JWT 만료 기간 9시간 //
 @Component
 public class JwtProvider {
+  
+  @Value("${jwt.secret}")
+  private String secretKey;
 
-    @Value("${jwt.secret}")
-    private String secretKey;
+  // function: JWT 생성 메서드 //
+  // description: 생성되는 JWT의 payload에는 sub, iat, exp 값이 들어가도록 //
+  // description: sub - 사용자의 아이디, iat - 생성시 시간, exp - 생성시간 + 9시간 //
+  public String create(String userId) {
 
-    // function: JWT 생성 메서드 //
-    // description: 생성되는 JWT의 payload에는 sub. iat, e //
-    // description: sub - 사용자의 아이디, iat - 생성시 시간, exp - 생성시간 + 9시간 //
-    public String create(String userId) {
+    Date expiration = Date.from(Instant.now().plus(9, ChronoUnit.HOURS));
 
-        Date expiration = Date.from(Instant.now().plus(9, ChronoUnit.HOURS));
+    Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 
-        Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+    String jwt = null;
 
-        String jwt = null;
+    try {
 
-        try {
+      jwt = Jwts.builder()
+        .signWith(key, SignatureAlgorithm.HS256)
+        .setSubject(userId)
+        .setIssuedAt(new Date())
+        .setExpiration(expiration)
+        .compact();
 
-            jwt = Jwts.builder()
-                .signWith(key, SignatureAlgorithm.HS256)
-                .setSubject(userId)
-                .setIssuedAt(new Date())
-                .setExpiration(expiration)
-                .compact();
-
-        } catch (Exception exception) {
-            exception.printStackTrace();
-        }
-
-        return jwt;
-
+    } catch (Exception exception) {
+      exception.printStackTrace();
     }
 
-    // function: JWT 검증 메서드 //
-    // description: 검증이 성공적으로 완료되면 subject에 있는 userId 반환 //
-    public String validate(String jwt) {
+    return jwt;
 
-        String userId = null;
+  }
 
-        Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
+  // function: JWT 검증 메서드 //
+  // description: 검증이 성공적으로 완료되면 subject에 있는 userId 반환 //
+  public String validate(String jwt) {
 
-        try {
+    String userId = null;
 
-            userId = Jwts.parserBuilder()
-                .setSigningKey(key)
-                .build()
-                .parseClaimsJws(jwt)
-                .getBody()
-                .getSubject();
+    Key key = Keys.hmacShaKeyFor(secretKey.getBytes(StandardCharsets.UTF_8));
 
-        } catch(Exception exception) {
-            exception.printStackTrace();
-        }
+    try {
 
-        return userId;
+      userId = Jwts.parserBuilder()
+        .setSigningKey(key)
+        .build()
+        .parseClaimsJws(jwt)
+        .getBody()
+        .getSubject();
 
+    } catch(Exception exception) {
+      exception.printStackTrace();
     }
+
+    return userId;
+
+  }
 
 }
