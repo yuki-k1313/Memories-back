@@ -13,16 +13,16 @@ import lombok.Getter;
 
 @Getter
 public class GetMemoryResponseDto extends ResponseDto {
-	
-	private List<MemoryTestVO> memoryTests;
+  
+  private List<MemoryTestVO> memoryTests;
 
-	private GetMemoryResponseDto(List<MemoryTestEntity> memoryTestEntities) {
-		this.memoryTests = MemoryTestVO.getList(memoryTestEntities);
-	}
+  private GetMemoryResponseDto(List<MemoryTestEntity> memoryTestEntities) {
+    this.memoryTests = MemoryTestVO.getList(memoryTestEntities);
+  }
 
-	public static ResponseEntity<GetMemoryResponseDto> success(List<MemoryTestEntity> memoryTestEntities) {
-		GetMemoryResponseDto body = new GetMemoryResponseDto(memoryTestEntities);
-		return ResponseEntity.status(HttpStatus.OK).body(body);
-	}
+  public static ResponseEntity<GetMemoryResponseDto> success(List<MemoryTestEntity> memoryTestEntities) {
+    GetMemoryResponseDto body = new GetMemoryResponseDto(memoryTestEntities);
+    return ResponseEntity.status(HttpStatus.OK).body(body);
+  }
 
 }
