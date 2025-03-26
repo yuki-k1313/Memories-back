@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostMemoryRequestDto {
-	@NotNull
-	@Min(0)
-	private Integer measurementTime;
+  @NotNull
+  @Min(0)
+  private Integer measurementTime;
 }
