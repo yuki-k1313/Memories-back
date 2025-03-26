@@ -9,9 +9,9 @@ import com.jmg.memories_back.common.entity.DiaryEntity;
 
 @Repository
 public interface DiaryRepository extends JpaRepository<DiaryEntity, Integer> {
-
-    DiaryEntity findByDiaryNumber(Integer diaryNumber);
-
-    List<DiaryEntity> findByUserIdOrderByWriteDateDesc(String userId);
+  
+  DiaryEntity findByDiaryNumber(Integer diaryNumber);
+  
+  List<DiaryEntity> findByUserIdOrderByWriteDateDesc(String userId);
 
 }
