@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class IdCheckRequestDto {
-    @NotBlank
-    private String userId;
+  @NotBlank
+  private String userId;
 }
