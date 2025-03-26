@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.jmg.memories_back.common.dto.request.auth.SignInRequestDto;
 import com.jmg.memories_back.common.dto.request.auth.SignUpRequestDto;
-import com.jmg.memories_back.common.dto.request.auth.idCheckRequestDto;
+import com.jmg.memories_back.common.dto.request.auth.IdCheckRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.dto.response.auth.SignInResponseDto;
 import com.jmg.memories_back.service.AuthService;
@@ -25,7 +25,7 @@ public class AuthController {
 
     @PostMapping("/id-check")
     public ResponseEntity<ResponseDto> idCheck(
-        @RequestBody @Valid idCheckRequestDto requestBody
+        @RequestBody @Valid IdCheckRequestDto requestBody
     ) {
         ResponseEntity<ResponseDto> response = authService.idCheck(requestBody);
         return response;

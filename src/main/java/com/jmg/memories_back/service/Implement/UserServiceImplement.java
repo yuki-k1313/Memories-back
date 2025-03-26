@@ -1,4 +1,4 @@
-package com.jmg.memories_back.service.Implement;
+package com.jmg.memories_back.service.implement;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

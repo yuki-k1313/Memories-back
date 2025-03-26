@@ -21,7 +21,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.jmg.memories_back.filter.JwtAuthenticationFilter;
 import com.jmg.memories_back.handler.OAuth2SuccessHandler;
-import com.jmg.memories_back.service.Implement.OAuth2UserServiceImplement;
+import com.jmg.memories_back.service.implement.OAuth2UserServiceImplement;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

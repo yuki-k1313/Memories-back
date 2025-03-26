@@ -1,14 +1,14 @@
-package com.jmg.memories_back.service.Implement;
+package com.jmg.memories_back.service.implement;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.jmg.memories_back.common.dto.request.auth.IdCheckRequestDto;
 import com.jmg.memories_back.common.dto.request.auth.SignInRequestDto;
 import com.jmg.memories_back.common.dto.request.auth.SignUpRequestDto;
-import com.jmg.memories_back.common.dto.request.auth.idCheckRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.dto.response.auth.SignInResponseDto;
 import com.jmg.memories_back.common.entity.UserEntity;
@@ -22,77 +22,77 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class AuthServiceImplement implements AuthService {
 
-    private final UserRepository userRepository;
-    private final JwtProvider jwtProvider;
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+  private final UserRepository userRepository;
+  private final JwtProvider jwtProvider;
+  private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
-    @Override
-    public ResponseEntity<ResponseDto> idCheck(idCheckRequestDto dto) {
-        
-        try {
+  @Override
+  public ResponseEntity<ResponseDto> idCheck(IdCheckRequestDto dto) {
+    
+    try {
 
-        String userId = dto.getUserId();
-        boolean existUser = userRepository.existsByUserId(userId);
-        if (existUser) return ResponseDto.existUser();
+      String userId = dto.getUserId();
+      boolean existUser = userRepository.existsByUserId(userId);
+      if (existUser) return ResponseDto.existUser();
 
-        } catch(Exception exception) {
-        exception.printStackTrace();
-        return ResponseDto.databaseError();
-        }
-
-        return ResponseDto.success(HttpStatus.OK);
+    } catch(Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
     }
 
-    @Override
-    public ResponseEntity<ResponseDto> signUp(SignUpRequestDto dto) {
-        
-        try {
-        
-            String userId = dto.getUserId();
-            boolean existUser = userRepository.existsByUserId(userId);
-            if (existUser) return ResponseDto.existUser();
-        
-            String userPassword = dto.getUserPassword();
-            String encodedPassword = passwordEncoder.encode(userPassword);
-            dto.setUserPassword(encodedPassword);
-        
-            UserEntity userEntity = new UserEntity(dto);
-            userRepository.save(userEntity);
+    return ResponseDto.success(HttpStatus.OK);
+  }
+
+  @Override
+  public ResponseEntity<ResponseDto> signUp(SignUpRequestDto dto) {
     
-        } catch(Exception exception) {
-            exception.printStackTrace();
-            return ResponseDto.databaseError();
-        }
-    
-        return ResponseDto.success(HttpStatus.CREATED);
-    
+    try {
+
+      String userId = dto.getUserId();
+      boolean existUser = userRepository.existsByUserId(userId);
+      if (existUser) return ResponseDto.existUser();
+
+      String userPassword = dto.getUserPassword();
+      String encodedPassword = passwordEncoder.encode(userPassword);
+      dto.setUserPassword(encodedPassword);
+
+      UserEntity userEntity = new UserEntity(dto);
+      userRepository.save(userEntity);
+
+    } catch(Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
     }
 
-    @Override
-    public ResponseEntity<? super SignInResponseDto> signIn(SignInRequestDto dto) {
-        
-        String accessToken = null;
+    return ResponseDto.success(HttpStatus.CREATED);
 
-        try {
+  }
 
-            String userId = dto.getUserId();
-            UserEntity userEntity = userRepository.findByUserId(userId);
-            if (userEntity == null) return ResponseDto.signInFail();
+  @Override
+  public ResponseEntity<? super SignInResponseDto> signIn(SignInRequestDto dto) {
+    
+    String accessToken = null;
 
-            String userPassword = dto.getUserPassword();
-            String encodedPassword = userEntity.getUserPassword();
-            boolean isMatch = passwordEncoder.matches(userPassword, encodedPassword);
-            if (!isMatch) return ResponseDto.signInFail();
+    try {
 
-            accessToken = jwtProvider.create(userId);
+      String userId = dto.getUserId();
+      UserEntity userEntity = userRepository.findByUserId(userId);
+      if (userEntity == null) return ResponseDto.signInFail();
 
-        } catch(Exception exception) {
-            exception.printStackTrace();
-            return ResponseDto.databaseError();
-        }
+      String userPassword = dto.getUserPassword();
+      String encodedPassword = userEntity.getUserPassword();
+      boolean isMatch = passwordEncoder.matches(userPassword, encodedPassword);
+      if (!isMatch) return ResponseDto.signInFail();
 
-        return SignInResponseDto.success(accessToken);
-        
+      accessToken = jwtProvider.create(userId);
+
+    } catch(Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
     }
 
+    return SignInResponseDto.success(accessToken);
+
+  }
+  
 }

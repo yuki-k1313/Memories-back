@@ -1,4 +1,4 @@
-package com.jmg.memories_back.service.Implement;
+package com.jmg.memories_back.service.implement;
 
 import com.jmg.memories_back.common.dto.request.test.PostConcentrationRequestDto;
 import com.jmg.memories_back.common.dto.request.test.PostMemoryRequestDto;

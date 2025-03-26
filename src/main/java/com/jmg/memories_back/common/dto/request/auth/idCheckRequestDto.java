@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class idCheckRequestDto {
+public class IdCheckRequestDto {
     @NotBlank
     private String userId;
 }
