@@ -13,8 +13,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MemoryTestPk implements Serializable {
-    @Column(name="user_id")
-    private String userId;
-    @Column(name="sequence")
-    private Integer sequence;
+  @Column(name="user_id")
+  private String userId;
+  @Column(name="sequence")
+  private Integer sequence;
 }
