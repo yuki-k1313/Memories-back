@@ -23,36 +23,33 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DiaryEntity {
+  
+  @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
+  private Integer diaryNumber;
+  private String userId;
+  private String writeDate;
+  private String weather;
+  private String feeling;
+  private String title;
+  private String content;
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Integer diaryNumber;
-    private String userId;
-    private String writeDate;
-    private String weather;
-    private String feeling;
-    private String title;
-    private String content;
+  public DiaryEntity(PostDiaryRequestDto dto, String userId) {
+    LocalDate now = LocalDate.now();
+    DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    this.userId = userId;
+    this.writeDate = now.format(dateTimeFormatter);
+    this.weather = dto.getWeather();
+    this.feeling = dto.getFeeling();
+    this.title = dto.getTitle();
+    this.content = dto.getContent();
+  }
 
-    public DiaryEntity(PostDiaryRequestDto dto, String userId) {
-        LocalDate now = LocalDate.now();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-
-        this.userId = userId;
-        this.writeDate = now.format(dateTimeFormatter);
-        this.weather = dto.getWeather();
-        this.feeling = dto.getFeeling();
-        this.title = dto.getTitle();
-        this.content = dto.getContent();
-    }
-
-    public void patch(PatchDiaryRequestDto dto) {
-        
-        this.weather = dto.getWeather();
-        this.feeling = dto.getFeeling();
-        this.title = dto.getTitle();
-        this.content = dto.getContent();
-
-    }
+  public void patch(PatchDiaryRequestDto dto) {
+    this.weather = dto.getWeather();
+    this.feeling = dto.getFeeling();
+    this.title = dto.getTitle();
+    this.content = dto.getContent();
+  }
 
 }
