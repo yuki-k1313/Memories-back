@@ -21,22 +21,23 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserController {
 
-    private final UserService userService;
+  private final UserService userService;
 
-    @GetMapping("/sign-in")
-    public ResponseEntity<? super GetSignInUserResponseDto> getSignInUser(
-        @AuthenticationPrincipal String userId
-    ) {
-        ResponseEntity<? super GetSignInUserResponseDto> response = userService.getSignInUser(userId);
-        return response;
-    }
+  @GetMapping("/sign-in")
+  public ResponseEntity<? super GetSignInUserResponseDto> getSignInUser(
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<? super GetSignInUserResponseDto> response = userService.getSignInUser(userId);
+    return response;
+  }
 
-    @PatchMapping({"", "/"})
-    public ResponseEntity<ResponseDto> patchUser(
-        @RequestBody @Valid PatchUserRequestDto requestBody,
-        @AuthenticationPrincipal String userId
-    ) {
-        ResponseEntity<ResponseDto> response = userService.patchUser(requestBody, userId);
-        return response;
-    }
+  @PatchMapping({"", "/"})
+  public ResponseEntity<ResponseDto> patchUser(
+    @RequestBody @Valid PatchUserRequestDto requestBody,
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<ResponseDto> respones = userService.patchUser(requestBody, userId);
+    return respones;
+  }
+  
 }
