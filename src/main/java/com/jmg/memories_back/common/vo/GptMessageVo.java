@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class GptMessageVo { 
-	private String role;
-	private String content;
+public class GptMessageVO {
+  private String role;
+  private String content;
 }

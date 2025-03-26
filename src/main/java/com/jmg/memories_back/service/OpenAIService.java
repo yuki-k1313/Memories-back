@@ -6,5 +6,5 @@ import com.jmg.memories_back.common.dto.request.openai.GetWayRequestDto;
 import com.jmg.memories_back.common.dto.response.openai.GetWayResponseDto;
 
 public interface OpenAIService {
-	ResponseEntity<? super GetWayResponseDto> getWay(GetWayRequestDto dto, String userId);
+  ResponseEntity<? super GetWayResponseDto> getWay(GetWayRequestDto dto, String userId);
 }
