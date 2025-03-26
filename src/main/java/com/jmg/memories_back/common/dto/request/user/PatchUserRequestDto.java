@@ -13,21 +13,21 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PatchUserRequestDto {
-	@NotBlank
-	@Pattern(regexp="^[가-힣]{2,5}$")
-	private String name;
-	
-	private String profileImage;
 
-	@NotBlank
-	private String address;
+  @NotBlank
+  @Pattern(regexp="^[가-힣]{2,5}$")
+  private String name;
 
-	private String detailAddress;
+  private String profileImage;
 
-	@Pattern(regexp="^(man|woman)$")
-	private String gender;
+  @NotBlank
+  private String address;
 
-	@Min(0)
-	private Integer age;
+  private String detailAddress;
 
+  @Pattern(regexp="^(man|woman)$")
+  private String gender;
+
+  @Min(0)
+  private Integer age;
 }
