@@ -11,10 +11,10 @@ import com.jmg.memories_back.common.dto.response.test.GetRecentlyConcentrationRe
 import com.jmg.memories_back.common.dto.response.test.GetRecentlyMemoryResponseDto;
 
 public interface TestService {
-	ResponseEntity<ResponseDto> postMemory(PostMemoryRequestDto dto, String userId);
-	ResponseEntity<ResponseDto> postConcentration(PostConcentrationRequestDto dto, String userId);
-	ResponseEntity<? super GetMemoryResponseDto> getMemory(String userId);
-	ResponseEntity<? super GetConcentrationResponseDto> getConcentration(String userId);
-	ResponseEntity<? super GetRecentlyMemoryResponseDto> getRecentlyMemory(String userId);
-	ResponseEntity<? super GetRecentlyConcentrationResponseDto> getRecentlyConcentration(String userId);
+  ResponseEntity<ResponseDto> postMemory(PostMemoryRequestDto dto, String userId);
+  ResponseEntity<ResponseDto> postConcentration(PostConcentrationRequestDto dto, String userId);
+  ResponseEntity<? super GetMemoryResponseDto> getMemory(String userId);
+  ResponseEntity<? super GetConcentrationResponseDto> getConcentration(String userId);
+  ResponseEntity<? super GetRecentlyMemoryResponseDto> getRecentlyMemory(String userId);
+  ResponseEntity<? super GetRecentlyConcentrationResponseDto> getRecentlyConcentration(String userId);
 }
