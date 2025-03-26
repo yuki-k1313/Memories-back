@@ -10,11 +10,11 @@ import com.jmg.memories_back.common.entity.pk.MemoryTestPk;
 
 @Repository
 public interface MemoryTestRepository extends JpaRepository<MemoryTestEntity, MemoryTestPk> {
+  
+  int countByUserId(String userId);
 
-	int countByUserId(String userid);
-
-	MemoryTestEntity findByUserIdAndSequence(String userId, Integer sequence);
-	List<MemoryTestEntity> findByUserIdOrderBySequenceDesc(String userId);
-	List<MemoryTestEntity> findTop10ByUserIdOrderBySequenceDesc(String userId);
+  MemoryTestEntity findByUserIdAndSequence(String userId, Integer sequence);
+  List<MemoryTestEntity> findByUserIdOrderBySequenceDesc(String userId);
+  List<MemoryTestEntity> findTop10ByUserIdOrderBySequenceDesc(String userId);
 
 }
