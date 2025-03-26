@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.jmg.memories_back.common.dto.response.user.GetSignInUserResponseDto;
-import com.jmg.memories_back.common.dto.response.ResponseDto;
 import com.jmg.memories_back.common.dto.request.user.PatchUserRequestDto;
+import com.jmg.memories_back.common.dto.response.ResponseDto;
+import com.jmg.memories_back.common.dto.response.user.GetSignInUserResponseDto;
 import com.jmg.memories_back.common.entity.UserEntity;
 import com.jmg.memories_back.repository.UserRepository;
 import com.jmg.memories_back.service.UserService;
@@ -17,42 +17,42 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserServiceImplement implements UserService {
 
-	private final UserRepository userRepository;
+  private final UserRepository userRepository;
 
-	@Override
-	public ResponseEntity<? super GetSignInUserResponseDto> getSignInUser(String userId) {
+  @Override
+  public ResponseEntity<? super GetSignInUserResponseDto> getSignInUser(String userId) {
 
-		UserEntity userEntity = null;
+    UserEntity userEntity = null;
+    
+    try {
 
-		try {
+      userEntity = userRepository.findByUserId(userId);
 
-			userEntity = userRepository.findByUserId(userId);
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
+    }
 
-		} catch (Exception exception) {
-			exception.printStackTrace();
-			return ResponseDto.databaseError();
-		}
+    return GetSignInUserResponseDto.success(userEntity);
 
-		return GetSignInUserResponseDto.success(userEntity);
+  }
 
-	}
+  @Override
+  public ResponseEntity<ResponseDto> patchUser(PatchUserRequestDto dto, String userId) {
+    
+    try {
+      
+      UserEntity userEntity = userRepository.findByUserId(userId);
+      userEntity.patch(dto);
+      userRepository.save(userEntity);
 
-	@Override
-	public ResponseEntity<ResponseDto> patchUser(PatchUserRequestDto dto, String userId) {
-		
-		try {
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
+    }
 
-			UserEntity userEntity = userRepository.findByUserId(userId);
-			userEntity.patch(dto);
-			userRepository.save(userEntity);
+    return ResponseDto.success(HttpStatus.OK);
 
-		} catch (Exception exception) {
-			exception.printStackTrace();
-			return ResponseDto.databaseError();
-		}
-
-		return ResponseDto.success(HttpStatus.OK);
-
-	}
-	
+  }
+  
 }
