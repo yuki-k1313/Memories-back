@@ -7,10 +7,10 @@ import com.jmg.memories_back.common.entity.UserEntity;
 
 @Repository
 public interface UserRepository extends JpaRepository<UserEntity, String> {
+  
+  boolean existsByUserId(String userId);
 
-    boolean existsByUserId(String userId);
-
-    UserEntity findByUserId(String userId);
-    UserEntity findByJoinTypeAndSnsId(String joinType, String snsId);
+  UserEntity findByUserId(String userId);
+  UserEntity findByJoinTypeAndSnsId(String joinType, String snsId);
 
 }
