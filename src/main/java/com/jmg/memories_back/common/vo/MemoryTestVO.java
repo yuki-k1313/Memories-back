@@ -9,26 +9,26 @@ import lombok.Getter;
 
 @Getter
 public class MemoryTestVO {
-	private Integer sequence;
-	private Integer measurementTime;
-	private String testDate;
-	private Integer gap;
+  private Integer sequence;
+  private Integer measurementTime;
+  private String testDate;
+  private Integer gap;
 
-	private MemoryTestVO(MemoryTestEntity memoryTestEntity) {
-		this.sequence = memoryTestEntity.getSequence();
-		this.measurementTime = memoryTestEntity.getMeasurementTime();
-		this.testDate = memoryTestEntity.getTestDate();
-		this.gap = memoryTestEntity.getGap();
-	}
+  private MemoryTestVO(MemoryTestEntity memoryTestEntity) {
+    this.sequence = memoryTestEntity.getSequence();
+    this.measurementTime = memoryTestEntity.getMeasurementTime();
+    this.testDate = memoryTestEntity.getTestDate();
+    this.gap = memoryTestEntity.getGap();
+  }
 
-	public static List<MemoryTestVO> getList(List<MemoryTestEntity> memoryTestEntities) {
-		List<MemoryTestVO> list = new ArrayList<>();
+  public static List<MemoryTestVO> getList(List<MemoryTestEntity> memoryTestEntities) {
+    List<MemoryTestVO> list = new ArrayList<>();
 
-		for(MemoryTestEntity memoryTestEntity: memoryTestEntities) {
-			MemoryTestVO vo = new MemoryTestVO(memoryTestEntity);
-			list.add(vo);
-		}
+    for (MemoryTestEntity memoryTestEntity: memoryTestEntities) {
+      MemoryTestVO vo = new MemoryTestVO(memoryTestEntity);
+      list.add(vo);
+    }
 
-		return list;
-	}
+    return list;
+  }
 }
