@@ -24,57 +24,57 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/v1/test")
 @RequiredArgsConstructor
 public class TestController {
-	
-	private final TestService testService;
+  
+  private final TestService testService;
 
-	@PostMapping("/memory")
-	public ResponseEntity<ResponseDto> postMemory(
-		@RequestBody @Valid PostMemoryRequestDto requestBody,
-		@AuthenticationPrincipal String userId
-	) {
-		ResponseEntity<ResponseDto> response = testService.postMemory(requestBody, userId);
-		return response;
-	}
+  @PostMapping("/memory")
+  public ResponseEntity<ResponseDto> postMemory(
+    @RequestBody @Valid PostMemoryRequestDto requestBody,
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<ResponseDto> response = testService.postMemory(requestBody, userId);
+    return response;
+  }
 
-	@PostMapping("/concentration")
-	public ResponseEntity<ResponseDto> postConcentration(
-		@RequestBody @Valid PostConcentrationRequestDto requestBody,
-		@AuthenticationPrincipal String userId
-	) {
-		ResponseEntity<ResponseDto> response = testService.postConcentration(requestBody, userId);
-		return response;
-	}
+  @PostMapping("/concentration")
+  public ResponseEntity<ResponseDto> postConcentration(
+    @RequestBody @Valid PostConcentrationRequestDto requestBody,
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<ResponseDto> response = testService.postConcentration(requestBody, userId);
+    return response;
+  }
 
-	@GetMapping("/memory")
-	public ResponseEntity<? super GetMemoryResponseDto> getMemory(
-		@AuthenticationPrincipal String userId
-	) {
-		ResponseEntity<? super GetMemoryResponseDto> response = testService.getMemory(userId);
-		return response;
-	}
+  @GetMapping("/memory")
+  public ResponseEntity<? super GetMemoryResponseDto> getMemory(
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<? super GetMemoryResponseDto> response = testService.getMemory(userId);
+    return response;
+  }
 
-	@GetMapping("/concentration")
-	public ResponseEntity<? super GetConcentrationResponseDto> getConcentration(
-		@AuthenticationPrincipal String userId
-	) {
-		ResponseEntity<? super GetConcentrationResponseDto> response = testService.getConcentration(userId);
-		return response;
-	}
+  @GetMapping("/concentration")
+  public ResponseEntity<? super GetConcentrationResponseDto> getConcentration(
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<? super GetConcentrationResponseDto> response = testService.getConcentration(userId);
+    return response;
+  }
 
-	@GetMapping("/memory/recently")
-	public ResponseEntity<? super GetRecentlyMemoryResponseDto> getRecentrlyMemory(
-		@AuthenticationPrincipal String userId
-	) {
-		ResponseEntity<? super GetRecentlyMemoryResponseDto> response = testService.getRecentlyMemory(userId);
-		return response;
-	}
+  @GetMapping("/memory/recently")
+  public ResponseEntity<? super GetRecentlyMemoryResponseDto> getRecentlyMemory(
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<? super GetRecentlyMemoryResponseDto> response = testService.getRecentlyMemory(userId);
+    return response;
+  }
 
-	@GetMapping("/concentration/recently")
-	public ResponseEntity<? super GetRecentlyConcentrationResponseDto> getRecentrlyConcentration(
-		@AuthenticationPrincipal String userId
-	) {
-		ResponseEntity<? super GetRecentlyConcentrationResponseDto> response = testService.getRecentlyConcentration(userId);
-		return response;
-	}
+  @GetMapping("/concentration/recently")
+  public ResponseEntity<? super GetRecentlyConcentrationResponseDto> getRecentlyConcentration(
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<? super GetRecentlyConcentrationResponseDto> response = testService.getRecentlyConcentration(userId);
+    return response;
+  }
 
 }
