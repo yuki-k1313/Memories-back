@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jmg.memories_back.common.dto.request.diary.PatchDiaryRequestDto;
+import com.jmg.memories_back.common.dto.request.diary.PostCommentRequestDto;
 import com.jmg.memories_back.common.dto.request.diary.PostDiaryRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
+import com.jmg.memories_back.common.dto.response.diary.GetCommentResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetDiaryResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetEmpathyResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetMyDiaryResponseDto;
@@ -88,6 +90,24 @@ public class DiaryController {
     @AuthenticationPrincipal String userId
   ) {
     ResponseEntity<ResponseDto> response = diarySerivce.putEmpathy(diaryNumber, userId);
+    return response;
+  }
+
+  @GetMapping("/{diaryNumber}/comment")
+  public ResponseEntity<? super GetCommentResponseDto> getComment(
+    @PathVariable("diaryNumber") Integer diaryNumber
+  ) {
+    ResponseEntity<? super GetCommentResponseDto> response = diarySerivce.getComment(diaryNumber);
+    return response;
+  }
+
+  @PostMapping("/{diaryNumber}/comment")
+  public ResponseEntity<ResponseDto> postComment(
+    @RequestBody @Valid PostCommentRequestDto requestBody,
+    @PathVariable("diaryNumber") Integer diaryNumber,
+    @AuthenticationPrincipal String userId
+  ) {
+    ResponseEntity<ResponseDto> response = diarySerivce.postComment(requestBody, diaryNumber, userId);
     return response;
   }
 

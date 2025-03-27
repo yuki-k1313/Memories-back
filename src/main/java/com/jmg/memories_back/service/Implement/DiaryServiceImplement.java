@@ -8,13 +8,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.jmg.memories_back.common.dto.request.diary.PatchDiaryRequestDto;
+import com.jmg.memories_back.common.dto.request.diary.PostCommentRequestDto;
 import com.jmg.memories_back.common.dto.request.diary.PostDiaryRequestDto;
 import com.jmg.memories_back.common.dto.response.ResponseDto;
+import com.jmg.memories_back.common.dto.response.diary.GetCommentResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetDiaryResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetEmpathyResponseDto;
 import com.jmg.memories_back.common.dto.response.diary.GetMyDiaryResponseDto;
+import com.jmg.memories_back.common.entity.CommentEntity;
 import com.jmg.memories_back.common.entity.DiaryEntity;
 import com.jmg.memories_back.common.entity.EmpathyEntity;
+import com.jmg.memories_back.repository.CommentRepository;
 import com.jmg.memories_back.repository.DiaryRepository;
 import com.jmg.memories_back.repository.EmpathyRepository;
 import com.jmg.memories_back.service.DiarySerivce;
@@ -27,6 +31,7 @@ public class DiaryServiceImplement implements DiarySerivce {
 
   private final DiaryRepository diaryRepository;
   private final EmpathyRepository empathyRepository;
+  private final CommentRepository commentRepository;
 
   @Override
   public ResponseEntity<ResponseDto> postDiary(PostDiaryRequestDto dto, String userId) {
@@ -118,6 +123,8 @@ public class DiaryServiceImplement implements DiarySerivce {
       boolean isWriter = writerId.equals(userId);
       if (!isWriter) return ResponseDto.noPermission();
 
+      empathyRepository.deleteBydiaryNumber(diaryNumber);
+      commentRepository.deleteBydiaryNumber(diaryNumber);
       diaryRepository.delete(diaryEntity);
 
     } catch (Exception exception) {
@@ -150,6 +157,8 @@ public class DiaryServiceImplement implements DiarySerivce {
   public ResponseEntity<ResponseDto> putEmpathy(Integer diaryNumber, String userId) {
     
     try {
+      boolean existDiary = diaryRepository.existsByDiaryNumber(diaryNumber);
+      if(!existDiary) return ResponseDto.noExistDiary();
 
       EmpathyEntity empathyEntity = empathyRepository.findByUserIdAndDiaryNumber(userId, diaryNumber);
       if (empathyEntity == null) {
@@ -165,6 +174,44 @@ public class DiaryServiceImplement implements DiarySerivce {
     }
 
     return ResponseDto.success(HttpStatus.OK);
+
+  }
+
+  @Override
+  public ResponseEntity<? super GetCommentResponseDto> getComment(Integer diaryNumber) {
+
+    List<CommentEntity> commentEntities = new ArrayList<>();
+
+    try {
+
+      commentEntities = commentRepository.findByDiaryNumberOrderByWriteDateDesc(diaryNumber);
+
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
+    }
+
+    return GetCommentResponseDto.success(commentEntities);
+    
+  }
+
+  @Override
+  public ResponseEntity<ResponseDto> postComment(PostCommentRequestDto dto, Integer diaryNumber, String userId) {
+    
+    try {
+      
+      boolean existDiary = diaryRepository.existsByDiaryNumber(diaryNumber);
+      if(!existDiary) return ResponseDto.noExistDiary();
+
+      CommentEntity commentEntity = new CommentEntity(dto, diaryNumber, userId);
+      commentRepository.save(commentEntity);
+
+    } catch (Exception exception) {
+      exception.printStackTrace();
+      return ResponseDto.databaseError();
+    }
+
+    return ResponseDto.success(HttpStatus.CREATED);
 
   }
   
