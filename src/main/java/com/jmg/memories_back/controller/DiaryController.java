@@ -93,7 +93,7 @@ public class DiaryController {
     return response;
   }
 
-  @GetMapping("/{diaryNumber}/comment")
+  @GetMapping("/{diaryNumber}/comment" )
   public ResponseEntity<? super GetCommentResponseDto> getComment(
     @PathVariable("diaryNumber") Integer diaryNumber
   ) {
